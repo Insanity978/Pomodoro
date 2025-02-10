@@ -1,21 +1,21 @@
-
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        Scanner userInput = new Scanner(System.in);
+        int studyMinutes, breakMinutes, sessions;
+
         System.out.print("How long do you want to study for? Type a number of minutes: ");
-        Scanner scanner = new Scanner(System.in);
-        int Study_minutes = scanner.nextInt();
+        studyMinutes = userInput.nextInt();
 
         System.out.println("How long should the break be? Type a number of minutes: ");
-        int Break_minutes = scanner.nextInt();
+        breakMinutes = userInput.nextInt();
 
         System.out.println("How many times do you want to repeat this? Enter a number: ");
-        int sessions = scanner.nextInt();
+        sessions = userInput.nextInt();
 
-        for (int i = 1; i <= 5; i++) {
-            System.out.println("i = " + i);
-        }
     }
 }
