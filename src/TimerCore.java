@@ -28,6 +28,8 @@ public class TimerCore {
 
         System.out.print("How many times do you want to repeat this? Enter a number: ");
         sessions = userInput.nextInt();
+
+        userInput.close();
     }
 
     public void startStudy() {
