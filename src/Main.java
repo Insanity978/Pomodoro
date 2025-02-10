@@ -11,11 +11,12 @@ public class Main {
         System.out.print("How long do you want to study for? Type a number of minutes: ");
         studyMinutes = userInput.nextInt();
 
-        System.out.println("How long should the break be? Type a number of minutes: ");
+        System.out.print("How long should the break be? Type a number of minutes: ");
         breakMinutes = userInput.nextInt();
 
-        System.out.println("How many times do you want to repeat this? Enter a number: ");
+        System.out.print("How many times do you want to repeat this? Enter a number: ");
         sessions = userInput.nextInt();
 
+        System.out.println(studyMinutes + " " + breakMinutes + " " + sessions);
     }
 }
