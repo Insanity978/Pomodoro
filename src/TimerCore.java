@@ -42,6 +42,7 @@ public class TimerCore {
         };
 
         // runs after 5 seconds
+        // make sure to purge/cancel tasks
         studyTimer.schedule(studytask, 5000);
     }
 
