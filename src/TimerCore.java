@@ -4,6 +4,7 @@ import java.util.TimerTask;
 
 public class TimerCore {
 
+    private Scanner userInput;
     private Timer studyTimer, breakTimer;
     private TimerTask studytask, breakTask;
     private int studyMinutes, breakMinutes, sessions;
@@ -11,6 +12,7 @@ public class TimerCore {
     // Default constructor
     TimerCore() {
         sessionPrompts();
+        // need to add completed session counter
         startStudy();
     };
 
@@ -18,8 +20,7 @@ public class TimerCore {
      * Prompts user for Pomodoro preferences
      */
     public void sessionPrompts() {
-        Scanner userInput = new Scanner(System.in);
-
+        userInput = new Scanner(System.in);
         System.out.print("How long do you want to study for? Type a number of minutes: ");
         studyMinutes = userInput.nextInt();
 
@@ -34,18 +35,24 @@ public class TimerCore {
 
     public void startStudy() {
         studyTimer = new Timer();
+        // tasks run on a seperate thread. This causes problems if there are actions outside
+        // and after running Timer#schedule()
         studytask = new TimerTask() {
             @Override
             public void run() {
-                System.out.println("its over!");
+                System.out.println("Study period is over!");
+                System.out.println("Time for break, x amount of sessions remain!");
+                System.out.println("Start break timer now? (Y/n)");
             }
         };
 
-        // runs after 5 seconds
-        // make sure to purge/cancel tasks
-        studyTimer.schedule(studytask, 5000);
+        // runs (task, amountOfMiliseconds)
+        studyTimer.schedule(studytask, 1000 * 60 * studyMinutes);
     }
-
+    
+    /**
+     * Prints out fields for debugging purposes
+     */
     public void print() {
         System.out.println(studyMinutes + " " + breakMinutes + " " + sessions);
     }
