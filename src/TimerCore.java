@@ -38,15 +38,10 @@ public class TimerCore {
         System.out.println("startStudy()");
         studyStartTime = System.currentTimeMillis();
         studyEndTime = studyStartTime + studyMinutes * 1000 * 60;
-        System.out.println(studyStartTime);
-        System.out.println(studyEndTime);
-        print();
          
         while (!studyFinished) {
             // update the clock
-            if (System.currentTimeMillis() >= studyEndTime) {
-                studyFinished = true;
-            }
+            if (System.currentTimeMillis() >= studyEndTime) studyFinished = true;
         }
         System.out.println("finished study time!");
 
