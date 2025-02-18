@@ -1,13 +1,11 @@
 import java.util.Scanner;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class TimerCore {
 
     private Scanner userInput;
-    private Timer studyTimer, breakTimer;
-    private TimerTask studytask, breakTask;
     private int studyMinutes, breakMinutes, sessions;
+    private boolean studyFinished = false;
+    private long studyStartTime, studyEndTime;
 
     // Default constructor
     TimerCore() {
@@ -34,20 +32,28 @@ public class TimerCore {
     }
 
     public void startStudy() {
-        studyTimer = new Timer();
-        // tasks run on a seperate thread. This causes problems if there are actions outside
-        // and after running Timer#schedule()
-        studytask = new TimerTask() {
-            @Override
-            public void run() {
-                System.out.println("Study period is over!");
-                System.out.println("Time for break, x amount of sessions remain!");
-                System.out.println("Start break timer now? (Y/n)");
+        // use a while loop that checks system time for time 
+        // tracking. Maybe come back to this with TimerTask and Timer
+        // when learnt more about managing threads? 
+        System.out.println("startStudy()");
+        studyStartTime = System.currentTimeMillis();
+        studyEndTime = studyStartTime + studyMinutes * 1000 * 60;
+        System.out.println(studyStartTime);
+        System.out.println(studyEndTime);
+        print();
+         
+        while (!studyFinished) {
+            // update the clock
+            if (System.currentTimeMillis() >= studyEndTime) {
+                studyFinished = true;
             }
-        };
+        }
+        System.out.println("finished study time!");
 
-        // runs (task, amountOfMiliseconds)
-        studyTimer.schedule(studytask, 1000 * 60 * studyMinutes);
+    }
+
+    public void startBreak() {
+         
     }
     
     /**
