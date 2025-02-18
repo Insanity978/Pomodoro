@@ -35,7 +35,6 @@ public class TimerCore {
         // use a while loop that checks system time for time 
         // tracking. Maybe come back to this with TimerTask and Timer
         // when learnt more about managing threads? 
-        System.out.println("startStudy()");
         studyStartTime = System.currentTimeMillis();
         studyEndTime = studyStartTime + studyMinutes * 1000 * 60;
          
