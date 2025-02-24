@@ -12,12 +12,12 @@ public class TimerCore {
     // Default constructor
     TimerCore() {
         studySessionPrompts();
+        breakSessionPrompts();
         // need to add completed session counter
         for(int i = 0; i < sessions; i++){
-            
+
         }
         startStudy();
-        breakSessionPrompts();
 
     };
 
@@ -37,15 +37,10 @@ public class TimerCore {
 
     public void breakSessionPrompts(){
         userInput = new Scanner(System.in);
-        System.out.println("Would you like to start the break timer? y/n");
-        String x = userInput.nextLine().toLowerCase();
-        if(x.equals("y")){
-            System.out.println("How long do you want to take a break for?");
-            breakMinutes = userInput.nextInt();
+        System.out.println("How long do you want to take a break for?");
+        breakMinutes = userInput.nextInt();
 
-            userInput.close();
-
-        }
+        userInput.close();
     }
 
     public void startStudy() {
@@ -64,7 +59,7 @@ public class TimerCore {
     }
 
     public void startBreak() {
-        breakStartTime = System.currentTimeMillis(); //Starts when prompt ends @sessionPrompts
+        breakStartTime = System.currentTimeMillis(); //Starts when prompt ends @breakSessionPrompts
         breakEndTime = breakStartTime + breakMinutes * 1000 * 60;
 
         while(!breakFinished){
@@ -72,7 +67,7 @@ public class TimerCore {
                 breakFinished = true;
             }
         }
-        System.out.println("finished study time!");
+        System.out.println("finished break time!");
     }
     
     /**
