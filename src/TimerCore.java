@@ -15,9 +15,10 @@ public class TimerCore {
         breakSessionPrompts();
         // need to add completed session counter
         for(int i = 0; i < sessions; i++){
-
+            startStudy();
+            System.out.println("Break time starts now");
+            startBreak();
         }
-        startStudy();
 
     };
 
