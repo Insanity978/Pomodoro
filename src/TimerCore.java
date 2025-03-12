@@ -33,12 +33,12 @@ public class TimerCore {
         System.out.print("How many times do you want to repeat this? Enter a number: ");
         sessions = userInput.nextInt();
 
-        userInput.close();
+        //userInput.close();
     }
 
     public void breakSessionPrompts(){
         userInput = new Scanner(System.in);
-        System.out.println("How long do you want to take a break for?");
+        System.out.println("How long do you want to take a break for? Enter a number: ");
         breakMinutes = userInput.nextInt();
 
         userInput.close();
